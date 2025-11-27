@@ -1,0 +1,18 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #15151E;
+    align-items: center;
+}
+
+.f1logo{
+    height: 1.6rem;
+    margin: 1rem;
+    align-items: center;
+}
+
+.usericon{
+    height: 2.3rem;
+    margin: 1rem;   
+    align-items: center;
+}
