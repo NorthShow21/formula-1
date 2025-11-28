@@ -1,7 +1,6 @@
 .highlight1 {
-    position: absolute;
-    left: 1rem;
-    right: 1rem;
+    margin: 0 1rem;
+    padding-top: 0.2rem;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.67), rgba(0, 0, 0, 0.67)), url('../assets/circuit-image.jpg');
     border-radius: 15px;
     background-size: cover;
@@ -69,6 +68,32 @@
     font-size: 1.7rem;
 }
 
-
+.article-card { display:flex; 
+    margin:1rem; 
+    background:#15151E; 
+    padding:8px; border-radius:8px; 
+    align-items:center; 
+}
+.article-thumb { 
+    width:5rem; 
+    height:auto; 
+    object-fit:cover; 
+    border-radius:6px; 
+    margin-right:1rem; 
+}
+.article-link { 
+    display:flex; 
+    align-items:center; 
+    text-decoration:none; 
+    color:inherit; 
+}
+.article-title { 
+    font-size:1rem;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight:600;
+    line-height:1.2; 
+    margin:0; 
+    color:#e6e6e6; 
+}
 
 
