@@ -10,6 +10,37 @@
   
 }
 
+.driver h1 {
+  text-align: start;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  color: white;
+}
+.driver h2 {
+  text-align: start;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+.driver-view-all{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+.view-all-link {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Change color to white */
+  font-family: 'Orbitron', sans-serif; /* Ensure consistent font */
+  font-weight: 400; /* Set font weight */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.view-all-link:hover {
+  color: gray; 
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
