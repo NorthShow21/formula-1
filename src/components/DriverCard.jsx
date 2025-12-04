@@ -1,6 +1,6 @@
-import '../css/driver.css';
+import '../css/drivercard.css';
 
-export default function DriverCard({ name = 'Driver Name', teamName, image, teamColor}) {
+export default function DriverCard({ name = 'Driver Name', teamName, image, teamColor, driverNumber}) {
   return (
     <article className="driver-card" style={{ ['--team-color']: teamColor }}>
       <div className="driver-left">
@@ -12,6 +12,7 @@ export default function DriverCard({ name = 'Driver Name', teamName, image, team
       <div className="driver-right">
         <div className="driver-name">{name}</div>
         <div className="driver-points">{teamName}</div>
+        <div className="driver-number">{driverNumber}</div>
       </div>
     </article>
   );

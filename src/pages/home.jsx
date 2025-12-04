@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import portrait from '../assets/portrait.png';
+import portrait2 from '../assets/portrait2.png';
 import DriverCard from "../components/DriverCard";
 import Highlight1 from "../components/Highlight1";
 import Highlight2 from "../components/Highlight2";
@@ -20,11 +20,11 @@ function Home() {
     useEffect(() => {
         const fetchDrivers = async () => {
             try {
-                const response = await fetch('https://api.openf1.org/v1/drivers?meeting_key=1275&&session_key=9850');
+                const response = await fetch('https://api.openf1.org/v1/drivers?meeting_key=1275&&team_name=McLaren&&team_name=Ferrari&&team_name=Red Bull Racing');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
 
-                
+
                 const seen = new Set();
                 const unique = data.filter(d => {
                     const key = String(d.driver_number ?? d.id ?? d.full_name ?? '').trim();
@@ -47,6 +47,19 @@ function Home() {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
+
+    const groupsMap = drivers.reduce((acc, d) => {
+        const team = d.team_name ?? d.team ?? 'Unknown Team';
+        if (!acc[team]) acc[team] = [];
+        acc[team].push(d);
+        return acc;
+    }, {});
+
+
+    const grouped = Object.keys(groupsMap)
+        .sort((a, b) => a.localeCompare(b))
+        .map(team => ({ team, drivers: groupsMap[team] }));
+
     return (
         <>
             <section className='highlight'>
@@ -58,17 +71,30 @@ function Home() {
             <section className='driver'>
                 <div className='driver-view-all'>
                     <h1>DRIVERS</h1>
-                    <Link to="/result" className="view-all-link">View All {`>`}</Link>
+                    <Link to="/drivers" className="view-all-link">View All {`>`}</Link>
                 </div>
-                {drivers.map(driver => (
-                    <DriverCard 
-                        key={driver.driver_number && driver.session_key} 
-                        name={driver.full_name}
-                        teamName={driver.team_name}
-                        image={driver.headshot_url || portrait}
-                        teamColor={normalizeColor(driver.team_colour)}
-                    />
-                ))}
+
+
+                {grouped.map(group => {
+                    const teamColor = normalizeColor(group.drivers[0]?.team_colour);
+                    return (
+                        <div className="team-group" key={group.team}>
+                            <div className="team-header" style={{ color: 'white' }}>
+                                {group.team}
+                            </div>
+
+                            {group.drivers.map(driver => (
+                                <DriverCard
+                                    key={driver.session_key ?? driver.id ?? driver.driver_number ?? driver.full_name}
+                                    name={driver.full_name}
+                                    teamName={driver.team_name}
+                                    image={driver.headshot_url || portrait2}
+                                    teamColor={teamColor}
+                                />
+                            ))}
+                        </div>
+                    );
+                })}
             </section>
         </>
     );

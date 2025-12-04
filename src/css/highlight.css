@@ -68,9 +68,10 @@
     font-size: 1.7rem;
 }
 
-.article-card { display:flex; 
+.article-card { 
+    display:flex; 
     margin:1rem; 
-    background:#15151E; 
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)); 
     padding:8px; border-radius:8px; 
     align-items:center; 
 }

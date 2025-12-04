@@ -5,7 +5,6 @@ function formatDateISO(iso) {
   if (!iso) return '';
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
-  // "Nov 28, 2025" => remove comma and uppercase => "NOV 28 2025"
   return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
     .format(d)
     .replace(/,/g, '')
