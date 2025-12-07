@@ -11,7 +11,7 @@ function formatDateISO(iso) {
     .toUpperCase();
 }
 
-export default function Highlight1({ meetingKey = 1275 }) {
+export default function Highlight1() {
   const [meeting, setMeeting] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,11 +22,18 @@ export default function Highlight1({ meetingKey = 1275 }) {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`https://api.openf1.org/v1/meetings?meeting_key=${meetingKey}`);
+        const res = await fetch('https://api.openf1.org/v1/meetings');
         if (!res.ok) throw new Error(`Fetch failed (${res.status})`);
         const data = await res.json();
-        const item = Array.isArray(data) ? data[0] : data;
-        if (!cancelled) setMeeting(item || null);
+        
+        const list = Array.isArray(data) ? data : [];
+        const latest = list.sort((a, b) => {
+          const timeA = new Date(a.date_start ?? '').getTime() || 0;
+          const timeB = new Date(b.date_start ?? '').getTime() || 0;
+          return timeB - timeA; 
+        })[0];
+
+        if (!cancelled) setMeeting(latest || null);
       } catch (err) {
         if (!cancelled) setError(err.message);
       } finally {
@@ -36,20 +43,18 @@ export default function Highlight1({ meetingKey = 1275 }) {
 
     fetchMeeting();
     return () => { cancelled = true; };
-  }, [meetingKey]);
+  }, []);
 
   if (loading) return <section className="highlight1"><div className="highlight-round"><h2>Loading…</h2></div></section>;
   if (error) return <section className="highlight1"><div className="highlight-round"><h2>Error</h2><div>{error}</div></div></section>;
 
-  const country = meeting?.country || meeting?.country_name || 'Unknown country';
-  const circuit = meeting?.circuit || meeting?.circuit_short_name || meeting?.venue || 'Unknown circuit';
+  const country = meeting?.country_name || meeting?.country || 'Unknown country';
+  const circuit = meeting?.circuit_short_name || meeting?.circuit || meeting?.venue || 'Unknown circuit';
   const rawDate = meeting?.date_start || meeting?.meeting_date || meeting?.local_date || '';
   const date = formatDateISO(rawDate);
 
   return (
     <section className="highlight1">
-      <div className="highlight-round">
-      </div>
       <div className="highlight-circuit-name">
         <h1>{country}</h1>
         <h2>{circuit}</h2>

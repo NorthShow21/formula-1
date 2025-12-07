@@ -6,6 +6,7 @@
     background-size: cover;
     width: auto;
     height: 23rem;
+    position: relative;
 }
 
 .highlight-round {
@@ -35,6 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
+    margin-top: 1rem;
     margin-left: 1rem;
 }
 
@@ -59,8 +61,10 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
-    align-self: flex-start;
-    margin: 11rem 1rem 0;
+    align-items: end;
+    position: absolute; /* add this */
+    bottom: 1rem; /* add this */
+    left: 1rem; /* add this */
 }
 
 .highlight-date h1{
