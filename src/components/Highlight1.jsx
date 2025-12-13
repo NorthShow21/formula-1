@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../css/highlight.css';
 
+
 function formatDateISO(iso) {
   if (!iso) return '';
   const d = new Date(iso);
@@ -49,11 +50,12 @@ export default function Highlight1() {
   if (error) return <section className="highlight1"><div className="highlight-round"><h2>Error</h2><div>{error}</div></div></section>;
 
   const country = meeting?.country_name || meeting?.country || 'Unknown country';
-  const circuit = meeting?.circuit_short_name || meeting?.circuit || meeting?.venue || 'Unknown circuit';
-  const rawDate = meeting?.date_start || meeting?.meeting_date || meeting?.local_date || '';
+  const circuit = meeting?.circuit_short_name || 'Unknown circuit';
+  const rawDate = meeting?.date_start || '';
   const date = formatDateISO(rawDate);
 
   return (
+    
     <section className="highlight1">
       <div className="highlight-circuit-name">
         <h1>{country}</h1>

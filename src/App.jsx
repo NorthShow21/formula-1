@@ -6,6 +6,7 @@ import BottomNav from './components/BottomNav';
 import Schedule from './pages/schedule';
 import Result from './pages/result';
 import { Routes, Route } from 'react-router-dom'
+import Footer from './components/Footer';
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
           <Route path='/result' element={<Result />} />
         </Routes>
       </main>
+      <footer className='app-footer'>
+        <Footer />
+      </footer>
       <BottomNav />
     </div>
   );

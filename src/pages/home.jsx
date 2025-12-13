@@ -64,7 +64,7 @@ function Home() {
         <>
             <section className='highlight'>
                 <h1>HIGHLIGHTS</h1>
-                <Highlight1 />
+                <Link to="/schedule" style={{ textDecoration: 'none' }} className="highligh1-link"><Highlight1 /></Link>
                 <Highlight2 />
             </section>
 

@@ -1,17 +1,311 @@
-.result-header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
-    font-size: 2rem;
-    color: white;
-    margin: 1rem 0;
-    text-align: center;
+/* =====================
+   PAGE
+===================== */
+
+.result {
+  background: radial-gradient(circle at top, #1b1c22, #000);
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  font-family: 'Inter', sans-serif;
 }
 
-.result-subheader h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
-    font-size: 1.2rem;
-    color: white;
-    margin: 0 0 1rem 0;
+
+
+@media (min-width: 1024px) {
+  .result {
+    padding: 3rem 4rem;
+  }
+}
+
+/* Constrain content width */
+.result > * {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =====================
+   CONTROLS
+===================== */
+
+.result-controls {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.session-dropdown {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.session-trigger {
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  gap: 0.75rem;
+
+}
+
+.session-trigger:hover {
+  border-color: #e10600;
+}
+
+.chevron {
+  width: 8px;
+  height: 8px;
+  margin-top: 1.5px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.chevron.up {
+  transform: rotate(-135deg);
+}
+
+.session-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 260px;
+
+  max-height: 320px;        /* 👈 controls visible height */
+  overflow-y: auto;         /* 👈 enables scrolling */
+
+  background: rgba(10, 10, 14, 0.95);
+  backdrop-filter: blur(12px);
+
+  border-radius: 14px;
+  padding: 0.5rem 0;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  z-index: 1000;
+}
+.session-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.session-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.session-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+.session-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+
+
+.session-menu li {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.session-menu li:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.session-menu li.active {
+  background: #e10600;
+}
+@media (max-width: 768px) {
+  .result-controls {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+
+
+/* =====================
+   HEADER
+===================== */
+
+.result-header {
+  margin-bottom: 2.5rem;
+}
+
+.result-header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem 0;
+}
+
+.result-meta {
+  color: #b5b5b5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* =====================
+   TABLE
+===================== */
+
+.result-table {
+  margin-top: 2.5rem;
+  overflow-x: auto;
+}
+
+/* Hide scrollbar (Webkit) */
+.result-table::-webkit-scrollbar {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+/* Sticky header */
+thead th {
+  position: sticky;
+  top: 0;
+  background: #0e0f14;
+  text-align: left;
+  padding: 1rem 0;
+  color: #9c9c9c;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 2;
+  padding-left: 1rem
+} 
+
+tbody tr {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Highlight P1 */
+
+tbody td {
+  padding: 1.15rem 0;
+  font-size: 0.95rem;
+  vertical-align: middle;
+  padding-left: 1rem;
+}
+
+/* =====================
+   DRIVER CELL
+===================== */
+
+.driver-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.driver-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* =====================
+   TEAM CELL
+===================== */
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* =====================
+   MOBILE ADAPTATION
+===================== */
+
+@media (max-width: 768px) {
+  .result-header {
     text-align: center;
+  }
+
+  .result-controls {
+    justify-content: center;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  tbody td {
+    font-size: 0.9rem;
+  }
+}
+
+/* =====================
+   PODIUM ACCENTS
+===================== */
+
+.result-row {
+  position: relative;
+}
+
+.result-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: transparent;
+}
+
+.result-row.pos-1::before {
+  background: linear-gradient(180deg, #ffd700, #bfa100); /* Gold */
+}
+
+.result-row.pos-2::before {
+  background: linear-gradient(180deg, #cfd3d6, #9fa4a8); /* Silver */
+}
+
+.result-row.pos-3::before {
+  background: linear-gradient(180deg, #cd7f32, #8a4f1d); /* Bronze */
+}
+
+/* =====================
+   SESSION ANIMATION
+===================== */
+
+.result-table {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.result-table.fade {
+  opacity: 0;
+  transform: translateY(6px);
 }
