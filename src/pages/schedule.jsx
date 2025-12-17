@@ -1,6 +1,7 @@
 import React from 'react';
 import Meeting from '../components/Meeting';
 import '../css/schedule.css';
+import { Link } from 'react-router-dom';
 
 function Schedule() {
   return (
@@ -9,7 +10,7 @@ function Schedule() {
     <div className='schedule-card'>
         <Meeting />
     </div>
-    <button className="predict-btn">Predict</button>
+    <Link to="/prediction" className='prediction-link'><button className="predict-btn">Predict</button></Link>
     </section>
   );
 }

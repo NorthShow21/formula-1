@@ -1,0 +1,161 @@
+/* ================= AUTH BASE ================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(225,6,0,0.18), transparent 40%),
+    linear-gradient(135deg, #050507, #0a0a0f);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 2.4rem 2.2rem;
+  margin: 1rem; /* IMPORTANT */
+
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+
+/* Title */
+.auth-title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.3rem;
+}
+
+.auth-subtitle {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-bottom: 2rem;
+}
+
+/* ================= INPUT ================= */
+
+.auth-field {
+  margin-bottom: 1.2rem;
+}
+
+.auth-field label {
+  display: block;
+  font-size: 0.75rem;
+  margin-left: 0.1rem;
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.1em;
+}
+
+.auth-input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+
+  background: rgba(0,0,0,0.45);
+  color: white;
+
+  font-size: 0.95rem;
+  line-height: 1.2;
+
+  outline: none;
+}
+
+
+.auth-input:focus {
+  border-color: #e10600;
+  box-shadow: 0 0 0 3px rgba(225,6,0,0,0.35);
+}
+
+/* ================= BUTTON ================= */
+
+.auth-button {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1.2rem;
+
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e10600, #b00000);
+
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-button:hover {
+  box-shadow: 0 10px 30px rgba(225,6,0,0.45);
+}
+
+.auth-button:active {
+  transform: scale(0.96);
+}
+
+/* ================= LINKS ================= */
+
+.auth-footer {
+  margin-top: 1.8rem;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.auth-footer a {
+  color: #e10600;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 2rem 1.6rem;
+    width: 90%;
+  }
+
+  .auth-input {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.95rem;
+  }
+  
+}
+

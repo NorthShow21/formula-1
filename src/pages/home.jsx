@@ -64,9 +64,15 @@ function Home() {
         <>
             <section className='highlight'>
                 <h1>HIGHLIGHTS</h1>
-                <Link to="/schedule" style={{ textDecoration: 'none' }} className="highligh1-link"><Highlight1 /></Link>
-                <Highlight2 />
+
+                <div className="highlights-container">
+                    <Link to="/schedule" style={{ textDecoration: 'none' }} className="highlight1-link">
+                        <Highlight1 />
+                    </Link>
+                    <Highlight2 />
+                </div>
             </section>
+
 
             <section className='driver'>
                 <div className='driver-view-all'>
@@ -78,21 +84,26 @@ function Home() {
                 {grouped.map(group => {
                     const teamColor = normalizeColor(group.drivers[0]?.team_colour);
                     return (
+                        
                         <div className="team-group" key={group.team}>
                             <div className="team-header" style={{ color: 'white' }}>
                                 {group.team}
                             </div>
-
+                            <Link to={`/driverdetails`} className='driver-link'>
                             {group.drivers.map(driver => (
-                                <DriverCard
-                                    key={driver.session_key ?? driver.id ?? driver.driver_number ?? driver.full_name}
-                                    name={driver.full_name}
-                                    teamName={driver.team_name}
-                                    image={driver.headshot_url || portrait2}
-                                    teamColor={teamColor}
-                                />
+                                
+                                    <DriverCard
+                                        key={driver.session_key ?? driver.id ?? driver.driver_number ?? driver.full_name}
+                                        name={driver.full_name}
+                                        teamName={driver.team_name}
+                                        image={driver.headshot_url || portrait2}
+                                        teamColor={teamColor}
+                                    />
+                                
                             ))}
+                            </Link>
                         </div>
+                        
                     );
                 })}
             </section>

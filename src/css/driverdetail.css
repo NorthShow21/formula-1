@@ -1,0 +1,314 @@
+.driver-hero {
+  position: relative;
+  min-height: 480px;
+  padding: 4rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background:
+    radial-gradient(
+      circle at 25% 50%,
+      rgba(255, 255, 255, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(
+      90deg,
+      #00245d 0%,
+      #003a8f 45%,
+      #1f5fbf 75%,
+      #4f86d8 100%
+    );
+
+  overflow: hidden;
+  color: white;
+}
+
+/* ================= LEFT ================= */
+
+.hero-content {
+  z-index: 4;
+  max-width: 560px;
+}
+
+.hero-firstname {
+  font-family: "Orbitron", cursive;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  opacity: 0.95;
+  text-align: center;
+}
+
+.hero-lastname {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  font-weight: 900;
+  margin: 0.5rem 0 1.4rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* META INFO */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.hero-meta img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.hero-meta .dot {
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* BUTTON */
+.hero-button {
+  margin-top: 2.2rem;
+  padding: 0.9rem 2.4rem;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all 0.25s ease;
+}
+
+.hero-button:hover {
+  background: white;
+  color: #00245d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= DRIVER IMAGE ================= */
+
+.hero-image {
+  right: 0%;
+  bottom: -10px;
+  z-index: 5;
+  width: 35rem;
+  height: 100%;
+  max-height: 500rem;
+  overflow: hidden;
+  position: absolute;
+  padding: 2rem; 
+}
+
+.hero-image img {
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+
+
+/* ================= DECOR ================= */
+
+.hero-shape {
+  position: absolute;
+  right: 22%;
+  top: 50%;
+  transform: translateY(-50%) rotate(20deg);
+
+  width: 320px;
+  height: 320px;
+  background: rgba(0, 0, 0, 0.22);
+  clip-path: polygon(0 0, 100% 10%, 90% 100%, 10% 90%);
+  z-index: 2;
+}
+
+/* Glow behind driver */
+.driver-hero::after {
+  content: "";
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08),
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+/* Vertical accent */
+.driver-hero::before {
+  content: "";
+  position: absolute;
+  left: 32px;
+  top: 70px;
+  bottom: 70px;
+  width: 4px;
+  background: white;
+  opacity: 0.85;
+}
+
+/* ================= STATISTICS ================= */
+.driver-statistic {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+}
+
+/* GRID LAYOUT */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* SECTIONS */
+.stat-section h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  color: white;
+}
+
+/* ROWS */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.stat-name {
+  font-size: 0.9rem;
+  color: #9f9a9a;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* MOBILE: STACK */
+@media (max-width: 900px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+
+
+
+/* ================================================= */
+/* ================== TABLET ======================= */
+/* ================================================= */
+
+@media (max-width: 1024px) {
+  .driver-hero {
+    padding: 3.5rem 2.5rem;
+  }
+
+  .hero-image {
+    right: 2%;
+  }
+
+  .hero-shape {
+    right: 26%;
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* ================================================= */
+/* ================== MOBILE ======================= */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .driver-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.8rem 1.4rem;
+    min-height: auto;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-meta {
+    justify-content: center;
+  }
+
+  .hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 360px;
+    bottom: -3rem;
+
+    padding: 0;
+    margin-top: 2rem;
+
+    overflow: hidden;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .hero-shape,
+  .driver-hero::before,
+  .driver-hero::after {
+    display: none;
+  }
+}
+
+/* ================================================= */
+/* =============== SMALL PHONES ==================== */
+/* ================================================= */
+
+@media (max-width: 420px) {
+  .hero-lastname {
+    font-size: 2.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-firstname {
+    font-size: 1.6rem;
+  }
+
+  .hero-button {
+    width: 100%;
+    padding: 0.9rem 1.6rem;
+  }
+
+  .hero-image {
+    height: 300px;
+  }
+
+  .hero-image img {
+    height: 115%;
+  }
+}

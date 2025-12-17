@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 1rem;
+  margin: 3rem 1rem 1rem 1rem;
 }
 .view-all-link {
   text-decoration: none; /* Remove underline */

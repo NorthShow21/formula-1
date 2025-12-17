@@ -111,6 +111,8 @@
   color: #fff;
   font-weight: bold;
   font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  text-decoration: none;
   cursor: pointer;
   transition: background 0.3s;
   margin: 0 auto;
@@ -120,6 +122,6 @@
   background: #d62828;
 }
 
-.schedule .predict-btn {
+.predict-btn {
     margin: 0 auto 5rem auto;
 }

@@ -6,3 +6,9 @@
     margin: 1rem;
     text-align: center;
 }
+
+.prediction-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}

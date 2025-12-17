@@ -80,8 +80,9 @@ export default function Drivers() {
                 <h2 className="team-title">{group.team}</h2>
                 <span className="team-count">{group.drivers.length}</span>
               </div>
-
+              <Link to="/driverdetails" className="driver-link">
               <div className="team-row">
+                
                 {group.drivers.map(driver => (
                   <DriverCard
                     key={driver.session_key ?? driver.id ?? driver.driver_number ?? driver.full_name}
@@ -92,7 +93,9 @@ export default function Drivers() {
                     teamColor={teamColor}
                   />
                 ))}
+                
               </div>
+              </Link>
             </section>
           );
         })}

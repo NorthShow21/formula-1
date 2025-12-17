@@ -1,0 +1,197 @@
+.profile-page {
+  padding: 2.5rem 2rem;
+  color: white;
+}
+
+/* ================= HERO ================= */
+
+.profile-hero {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: center;
+
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.profile-avatar img {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3px solid #e10600;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-username {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.profile-email {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ================= POINTS ================= */
+
+.profile-points {
+  text-align: right;
+}
+
+.points-label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.points-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #e10600;
+  text-shadow: 0 0 14px rgba(225,6,0,0.45);
+}
+
+/* ================= STATS ================= */
+
+.profile-stats {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.stat {
+  padding-left: 1rem;
+  border-left: 3px solid rgba(255,255,255,0.15);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.65;
+  margin-bottom: 0.4rem;
+}
+
+.stat-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .profile-hero {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 1.2rem;
+  }
+
+  .profile-points {
+    grid-column: span 2;
+    text-align: left;
+  }
+
+  .profile-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.profile-table {
+  margin-top: 2.5rem;
+}
+
+.table-title {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+
+/* Table container */
+.stats-table {
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Row */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Labels */
+.stats-label {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.05em;
+}
+
+/* Values */
+.stats-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Highlight row (Rank) */
+.stats-row.highlight .stats-value {
+  color: #e10600;
+  text-shadow: 0 0 10px rgba(225,6,0,0.4);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .stats-row {
+    padding: 0.85rem 0;
+  }
+
+  .stats-value {
+    font-size: 1.05rem;
+  }
+}
+
+/* ================= LOGOUT BUTTON ================= */
+.logout-button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #e10600, #ff2a2a);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(225,6,0,0.6);
+  transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+  background: linear-gradient(90deg, #ff2a2a, #e10600);
+  box-shadow: 0 0 14px rgba(225,6,0,0.85);
+  transform: translateY(-2px);
+}
+
+.logout-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 6px rgba(225,6,0,0.5);
+}

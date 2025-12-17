@@ -258,6 +258,10 @@ tbody td {
     justify-content: center;
   }
 
+  .result-meta{
+    justify-content: center;
+  }
+
   table {
     min-width: 600px;
   }

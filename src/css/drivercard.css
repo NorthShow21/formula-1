@@ -151,3 +151,8 @@
   border-color: var(--team-color);
 }
 
+.driver-link {
+  text-decoration: none;
+  color: inherit;
+}
+

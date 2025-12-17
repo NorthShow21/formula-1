@@ -12,7 +12,7 @@ export default function BottomNav() {
   const location = useLocation();
 
   return (
-    <nav className="bottom-nav" role="navigation" aria-label="Bottom navigation">
+    <nav className="bottom-nav mobile-only" role="navigation" aria-label="Bottom navigation">
       {items.map(item => {
         const active = location.pathname === item.to;
         return (
