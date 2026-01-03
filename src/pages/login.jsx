@@ -8,11 +8,18 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (email === 'vynandrog@gmail.com' && password === 'password') {
-      localStorage.setItem('loggedIn', 'true');
-      navigate('/profile'); 
+    const storedUser = localStorage.getItem('user');
+    
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      if (email === user.email && password === user.password) {
+        localStorage.setItem('loggedIn', 'true');
+        navigate('/profile');
+      } else {
+        alert('Invalid credentials');
+      }
     } else {
-      alert('Invalid credentials');
+      alert('No account found. Please sign up first.');
     }
   };
 

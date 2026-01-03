@@ -6,6 +6,7 @@ import fallbackDriver from "../assets/portrait2.png";
 
 function Prediction() {
   const navigate = useNavigate();
+  const [userRaceName, setUserRaceName] = useState("Joel");
 
   /* -----------------------------
      PROTECT ROUTE
@@ -14,6 +15,14 @@ function Prediction() {
     const loggedIn = localStorage.getItem("loggedIn");
     if (!loggedIn) {
       navigate("/login"); // redirect if not logged in
+    } else {
+      // Get user's race name from localStorage
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        const userData = JSON.parse(storedUser);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setUserRaceName(userData.username);
+      }
     }
   }, [navigate]);
 
@@ -29,6 +38,7 @@ function Prediction() {
   const dropdownRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [predictionsMap, setPredictionsMap] = useState({});
 
   /* -----------------------------
      MOCK LEADERBOARD (replace later)
@@ -40,9 +50,9 @@ function Prediction() {
       { id: 2, username: "PoleHunter", points: 198 },
       { id: 3, username: "Slipstream", points: 181 },
       { id: 4, username: "DRSKing", points: 142 },
-      { id: 5, username: "Joel", points: 0 }
+      { id: 5, username: userRaceName, points: 0 }
     ]);
-  }, []);
+  }, [userRaceName]);
 
   /* -----------------------------
      LOAD SESSIONS (latest meeting)
@@ -86,6 +96,46 @@ function Prediction() {
 
     loadDrivers();
   }, [selectedSession]);
+
+  // Load saved predictions for the selected session and overall map
+  useEffect(() => {
+    const preds = JSON.parse(localStorage.getItem('predictions') || '{}');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPredictionsMap(preds);
+
+    if (!selectedSession) return;
+    const existing = preds[selectedSession];
+    if (existing) {
+      setSelectedDriver(existing);
+      setSubmitted(true);
+    } else {
+      setSubmitted(false);
+    }
+  }, [selectedSession]);
+
+  const handleSubmit = () => {
+    if (!selectedSession || !selectedDriver) return;
+
+    const preds = JSON.parse(localStorage.getItem('predictions') || '{}');
+    const hadPrediction = Boolean(preds[selectedSession]);
+
+    // Save or update prediction for this session
+    preds[selectedSession] = selectedDriver;
+    localStorage.setItem('predictions', JSON.stringify(preds));
+    setPredictionsMap(preds);
+
+    // If this is the first time predicting this session, increment user's counter
+    if (!hadPrediction) {
+      const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+      const current = storedUser.predictionsMade ? Number(storedUser.predictionsMade) : 0;
+      storedUser.predictionsMade = current + 1;
+      localStorage.setItem('user', JSON.stringify(storedUser));
+    }
+
+    setSubmitted(true);
+    setShowConfirmation(true);
+    setTimeout(() => setShowConfirmation(false), 3000);
+  };
 
   const filteredDrivers = drivers
     .filter((d) =>
@@ -194,6 +244,7 @@ function Prediction() {
                   `}
                   style={{ "--team-color": teamColor }}
                   onClick={() => {
+                    if (submitted) return; // locked until user chooses to change
                     setSelectedDriver(d.driver_number);
                     setSubmitted(false);
                   }}
@@ -243,20 +294,21 @@ function Prediction() {
             )}
           </div>
 
-          <button
-            className="submit-prediction"
-            disabled={!selectedDriver}
-            onClick={() => {
-              setSubmitted(true);
-              setShowConfirmation(true);
-
-              setTimeout(() => {
-                setShowConfirmation(false);
-              }, 3000);
-            }}
-          >
-            Submit Prediction
-          </button>
+          {!submitted ? (
+            <button
+              className="submit-prediction"
+              disabled={!selectedDriver}
+              onClick={handleSubmit}
+            >
+              Submit Prediction
+            </button>
+          ) : (
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className="submit-prediction" onClick={() => setSubmitted(false)}>
+                Change Prediction
+              </button>
+            </div>
+          )}
 
           {showConfirmation && (
             <div className="prediction-confirmation">
