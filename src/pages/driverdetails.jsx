@@ -1,12 +1,11 @@
 import "../css/driverdetail.css";
-import driverImg from "../assets/max.png"; // cut-out PNG
+import driverImg from "../assets/max.png";
 import flagNL from "../assets/nl.png";
 
 export default function DriverDetails() {
   return (
     <div className="driver-details">
         <section className="driver-hero">
-        {/* LEFT CONTENT */}
         <div className="hero-content">
             <span className="hero-firstname">Max</span>
             <h1 className="hero-lastname">VERSTAPPEN</h1>
@@ -23,12 +22,10 @@ export default function DriverDetails() {
             
         </div>
 
-        {/* RIGHT IMAGE */}
         <div className="hero-image">
             <img src={driverImg} alt="Max Verstappen" />
         </div>
 
-        {/* DECORATIVE SHAPES */}
         <div className="hero-shape" />
         </section>
 
@@ -37,7 +34,6 @@ export default function DriverDetails() {
         <h1>STATISTICS</h1>
 
         <div className="stat-grid">
-            {/* LEFT COLUMN */}
             <div className="stat-column">
             <section className="stat-section">
                 <h2>SEASON</h2>
@@ -78,7 +74,6 @@ export default function DriverDetails() {
             </section>
             </div>
 
-            {/* RIGHT COLUMN */}
             <div className="stat-column">
             <section className="stat-section">
                 <h2>CAREER</h2>

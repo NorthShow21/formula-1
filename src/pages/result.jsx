@@ -39,7 +39,6 @@ function Result() {
 
       setMeetings(data);
 
-      // Default meeting
       const defaultMeeting =
         data.find(m => m.meeting_key === MEETING_KEY) || data[0];
 
@@ -63,7 +62,6 @@ function Result() {
 
       setSessions(data);
 
-      // Default to Race
       const race =
         data.find(s => s.session_type === "Race") || data[0];
 
@@ -89,7 +87,6 @@ function Result() {
       const resultData = await resultRes.json();
       const driverData = await driverRes.json();
 
-      // Index drivers by number
       const driversByNumber = {};
       driverData.forEach(d => {
         driversByNumber[d.driver_number] = d;
@@ -97,9 +94,7 @@ function Result() {
       const currentSession = sessions.find(
         s => s.session_key === sessionKey
       );
-
       
-      // Merge
       const merged = resultData
   .filter(r => !r.dns && !r.dsq)
   .map(r => {
@@ -127,12 +122,10 @@ function Result() {
     };
   })
   .sort((a, b) => {
-    // If position exists, trust it
     if (a.position != null && b.position != null) {
       return a.position - b.position;
     }
 
-    // Otherwise sort by best time
     return (a.displayTime ?? Infinity) - (b.displayTime ?? Infinity);
   });
 

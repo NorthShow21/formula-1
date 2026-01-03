@@ -10,15 +10,13 @@ export default function Profile() {
   useEffect(() => {
     const loggedIn = localStorage.getItem('loggedIn');
     if (!loggedIn) {
-      navigate('/login'); // redirect if not logged in
+      navigate('/login');
     } else {
-      // Load user data from localStorage
       const storedUser = localStorage.getItem('user');
       if (storedUser) {
         const userData = JSON.parse(storedUser);
         const preds = JSON.parse(localStorage.getItem('predictions') || '{}');
         const predsCount = Object.keys(preds).length;
-        // prefer stored counter if present, otherwise derive from predictions map
         const predictionsMade = userData.predictionsMade ? Number(userData.predictionsMade) : predsCount;
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setUser({
@@ -31,13 +29,12 @@ export default function Profile() {
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('loggedIn'); // clear login status
-    navigate('/login'); // redirect to login page
+    localStorage.removeItem('loggedIn');
+    navigate('/login');
   };
 
   return (
     <main className="profile-page">
-      {/* HERO */}
       <section className="profile-hero">
         <div className="profile-avatar">
           <img src={usericon} alt="User avatar" />

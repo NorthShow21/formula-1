@@ -8,15 +8,11 @@ function Prediction() {
   const navigate = useNavigate();
   const [userRaceName, setUserRaceName] = useState("Joel");
 
-  /* -----------------------------
-     PROTECT ROUTE
-  ------------------------------ */
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
     if (!loggedIn) {
-      navigate("/login"); // redirect if not logged in
+      navigate("/login");
     } else {
-      // Get user's race name from localStorage
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
         const userData = JSON.parse(storedUser);
@@ -40,9 +36,6 @@ function Prediction() {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [, setPredictionsMap] = useState({});
 
-  /* -----------------------------
-     MOCK LEADERBOARD (replace later)
-  ------------------------------ */
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLeaderboard([
@@ -54,9 +47,6 @@ function Prediction() {
     ]);
   }, [userRaceName]);
 
-  /* -----------------------------
-     LOAD SESSIONS (latest meeting)
-  ------------------------------ */
   useEffect(() => {
     const loadSessions = async () => {
       const meetingRes = await fetch(
@@ -80,9 +70,6 @@ function Prediction() {
     loadSessions();
   }, []);
 
-  /* -----------------------------
-     LOAD DRIVERS FOR SESSION
-  ------------------------------ */
   useEffect(() => {
     if (!selectedSession) return;
 
@@ -97,7 +84,6 @@ function Prediction() {
     loadDrivers();
   }, [selectedSession]);
 
-  // Load saved predictions for the selected session and overall map
   useEffect(() => {
     const preds = JSON.parse(localStorage.getItem('predictions') || '{}');
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -119,12 +105,10 @@ function Prediction() {
     const preds = JSON.parse(localStorage.getItem('predictions') || '{}');
     const hadPrediction = Boolean(preds[selectedSession]);
 
-    // Save or update prediction for this session
     preds[selectedSession] = selectedDriver;
     localStorage.setItem('predictions', JSON.stringify(preds));
     setPredictionsMap(preds);
 
-    // If this is the first time predicting this session, increment user's counter
     if (!hadPrediction) {
       const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
       const current = storedUser.predictionsMade ? Number(storedUser.predictionsMade) : 0;
@@ -143,9 +127,6 @@ function Prediction() {
     )
     .slice(0, visibleCount);
 
-  /* -----------------------------
-     CLOSE DROPDOWN WHEN CLICK OUTSIDE
-  ------------------------------ */
   useEffect(() => {
     function handleClickOutside(e) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -178,7 +159,6 @@ function Prediction() {
         <h1 className="prediction-title">Make Your Prediction</h1>
 
         <div className="session-dropdown" ref={dropdownRef}>
-          {/* TRIGGER */}
           <button
             className="session-trigger"
             onClick={() => setSessionOpen((o) => !o)}
@@ -190,7 +170,6 @@ function Prediction() {
             <span className={`chevron ${sessionOpen ? "up" : ""}`} />
           </button>
 
-          {/* MENU */}
           <div className={`session-menu ${sessionOpen ? "open" : ""}`}>
             {sessions.map((s) => (
               <button
@@ -244,7 +223,7 @@ function Prediction() {
                   `}
                   style={{ "--team-color": teamColor }}
                   onClick={() => {
-                    if (submitted) return; // locked until user chooses to change
+                    if (submitted) return;
                     setSelectedDriver(d.driver_number);
                     setSubmitted(false);
                   }}
