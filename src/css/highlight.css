@@ -63,9 +63,9 @@
     flex-direction: row;
     justify-content: start;
     align-items: end;
-    position: absolute; /* add this */
-    bottom: 1rem; /* add this */
-    left: 1rem; /* add this */
+    position: absolute; 
+    bottom: 1rem; 
+    left: 1rem; 
 }
 
 .highlight-date h1{
@@ -102,15 +102,13 @@
     color:#e6e6e6; 
 }
 
-/* Container for highlights */
 .highlights-container {
     display: flex;
-    flex-direction: column; /* stacked on mobile */
+    flex-direction: column; 
     gap: 1.5rem;
     margin-top: 1rem;
 }
 
-/* Desktop: side by side */
 @media (min-width: 992px) {
     .highlights-container {
         flex-direction: row;
@@ -128,8 +126,8 @@
 
     .highlight1,
     .highlight2 {
-        flex: 1; /* equal width */
-        margin: 0; /* remove mobile margin */
+        flex: 1; 
+        margin: 0; 
     }
 
     .highlight1 {

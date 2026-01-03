@@ -38,7 +38,7 @@ function Prediction() {
   const dropdownRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [predictionsMap, setPredictionsMap] = useState({});
+  const [, setPredictionsMap] = useState({});
 
   /* -----------------------------
      MOCK LEADERBOARD (replace later)

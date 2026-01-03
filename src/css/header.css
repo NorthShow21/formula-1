@@ -14,13 +14,11 @@
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* LEFT */
 .header-logo {
   height: 36px;
   object-fit: contain;
 }
 
-/* CENTER NAV */
 .header-nav {
   display: flex;
   gap: 2rem;
@@ -39,7 +37,6 @@
   color: white;
 }
 
-/* Active underline */
 .header-link.active {
   color: white;
 }
@@ -55,7 +52,6 @@
   border-radius: 999px;
 }
 
-/* RIGHT */
 .header-user {
   width: 36px;
   height: 36px;
@@ -70,7 +66,6 @@
 }
 
 
-/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
   .site-header {
@@ -95,11 +90,9 @@
   }
 }
 
-/* ================= SMALL PHONES ================= */
 
 @media (max-width: 480px) {
   .header-nav {
-    display: none; /* hide nav on very small screens */
+    display: none;
   }
-  
 }

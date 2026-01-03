@@ -24,7 +24,6 @@
   color: white;
 }
 
-/* ================= LEFT ================= */
 
 .hero-content {
   z-index: 4;
@@ -48,7 +47,6 @@
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-/* META INFO */
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
@@ -72,7 +70,6 @@
   opacity: 0.6;
 }
 
-/* BUTTON */
 .hero-button {
   margin-top: 2.2rem;
   padding: 0.9rem 2.4rem;
@@ -94,7 +91,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* ================= DRIVER IMAGE ================= */
 
 .hero-image {
   right: 0%;
@@ -117,7 +113,6 @@
 
 
 
-/* ================= DECOR ================= */
 
 .hero-shape {
   position: absolute;
@@ -132,7 +127,6 @@
   z-index: 2;
 }
 
-/* Glow behind driver */
 .driver-hero::after {
   content: "";
   position: absolute;
@@ -149,7 +143,6 @@
   z-index: 1;
 }
 
-/* Vertical accent */
 .driver-hero::before {
   content: "";
   position: absolute;
@@ -161,7 +154,6 @@
   opacity: 0.85;
 }
 
-/* ================= STATISTICS ================= */
 .driver-statistic {
   padding: 3rem 2rem;
   max-width: 1200px;
@@ -169,7 +161,6 @@
   color: white;
 }
 
-/* GRID LAYOUT */
 .stat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -177,7 +168,6 @@
   align-items: start;
 }
 
-/* SECTIONS */
 .stat-section h2 {
   font-size: 1.5rem;
   letter-spacing: 0.25em;
@@ -186,7 +176,6 @@
   color: white;
 }
 
-/* ROWS */
 .stat-row {
   display: flex;
   justify-content: space-between;
@@ -206,20 +195,12 @@
   color: white;
 }
 
-/* MOBILE: STACK */
 @media (max-width: 900px) {
   .stat-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 }
-
-
-
-
-/* ================================================= */
-/* ================== TABLET ======================= */
-/* ================================================= */
 
 @media (max-width: 1024px) {
   .driver-hero {
@@ -237,9 +218,6 @@
   }
 }
 
-/* ================================================= */
-/* ================== MOBILE ======================= */
-/* ================================================= */
 
 @media (max-width: 768px) {
   .driver-hero {
@@ -285,9 +263,6 @@
   }
 }
 
-/* ================================================= */
-/* =============== SMALL PHONES ==================== */
-/* ================================================= */
 
 @media (max-width: 420px) {
   .hero-lastname {

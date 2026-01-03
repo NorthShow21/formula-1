@@ -3,8 +3,6 @@
   color: white;
 }
 
-/* ================= HERO ================= */
-
 .profile-hero {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -41,7 +39,6 @@
   opacity: 0.7;
 }
 
-/* ================= POINTS ================= */
 
 .profile-points {
   text-align: right;
@@ -62,7 +59,6 @@
   text-shadow: 0 0 14px rgba(225,6,0,0.45);
 }
 
-/* ================= STATS ================= */
 
 .profile-stats {
   margin-top: 2rem;
@@ -89,8 +85,6 @@
 }
 
 
-
-/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
   .profile-hero {
@@ -121,12 +115,10 @@
   margin-bottom: 1rem;
 }
 
-/* Table container */
 .stats-table {
   border-top: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Row */
 .stats-row {
   display: flex;
   justify-content: space-between;
@@ -136,27 +128,22 @@
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Labels */
 .stats-label {
   font-size: 0.85rem;
   opacity: 0.75;
   letter-spacing: 0.05em;
 }
 
-/* Values */
 .stats-value {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
 }
 
-/* Highlight row (Rank) */
 .stats-row.highlight .stats-value {
   color: #e10600;
   text-shadow: 0 0 10px rgba(225,6,0,0.4);
 }
-
-/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
   .stats-row {
@@ -168,7 +155,6 @@
   }
 }
 
-/* ================= LOGOUT BUTTON ================= */
 .logout-button {
   margin-top: 1rem;
   padding: 0.6rem 1.4rem;

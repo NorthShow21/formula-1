@@ -1,4 +1,4 @@
-/* ================= AUTH BASE ================= */
+/* ================= AUTH ================= */
 *,
 *::before,
 *::after {
@@ -17,13 +17,12 @@
   font-family: 'Orbitron', sans-serif;
 }
 
-/* Card */
 .auth-card {
   width: 100%;
   max-width: 420px;
 
   padding: 2.4rem 2.2rem;
-  margin: 1rem; /* IMPORTANT */
+  margin: 1rem;
 
   border-radius: 18px;
   background: rgba(255,255,255,0.06);
@@ -35,7 +34,6 @@
 }
 
 
-/* Title */
 .auth-title {
   font-size: 2rem;
   font-weight: 900;
@@ -50,7 +48,6 @@
   margin-bottom: 2rem;
 }
 
-/* ================= INPUT ================= */
 
 .auth-field {
   margin-bottom: 1.2rem;
@@ -89,7 +86,6 @@
   box-shadow: 0 0 0 3px rgba(225,6,0,0,0.35);
 }
 
-/* ================= BUTTON ================= */
 
 .auth-button {
   width: 100%;
@@ -116,7 +112,6 @@
   transform: scale(0.96);
 }
 
-/* ================= LINKS ================= */
 
 .auth-footer {
   margin-top: 1.8rem;
@@ -131,7 +126,6 @@
   font-weight: 600;
 }
 
-/* ================= ANIMATION ================= */
 
 @keyframes fadeUp {
   from {
@@ -144,7 +138,6 @@
   }
 }
 
-/* ================= MOBILE ================= */
 
 @media (max-width: 480px) {
   .auth-card {
